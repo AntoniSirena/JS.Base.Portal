@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'angular-admin-lte';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,22 @@ import { LayoutService } from 'angular-admin-lte';
 export class AppComponent implements OnInit {
   public customLayout: boolean;
 
-  constructor(
-    private layoutService: LayoutService
-  ) {}
+  public rutaActual: string = "";
+  cargaInicial: boolean = false;
+
+  constructor( private layoutService: LayoutService, private router: Router, private location: Location ) {}
 
   ngOnInit() {
     this.layoutService.isCustomLayout.subscribe((value: boolean) => {
       this.customLayout = value;
     });
+    if(window.location.hash == "/#")
+    {
+     this.router.navigate(['/login']);
+    }
+    else{
+     this.rutaActual = window.location.href;
+    }
+
   }
 }
