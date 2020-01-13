@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user/user';
 import { Response } from 'src/app/models/response/response';
 import { FormControl, FormGroup, FormBuilder, Validators , FormArray} from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,9 +16,8 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   myForm: FormGroup;
-  response: Response;
 
-  constructor(private externalService: ExternalService, private form: FormBuilder) { }
+  constructor(private externalService: ExternalService, private form: FormBuilder, private router :Router) { }
 
   ngOnInit() {
 
@@ -52,15 +52,29 @@ export class RegisterComponent implements OnInit {
     user.deleterUserId = null,
     user.deletionTime = null
 
-    this.externalService.createUser(user).subscribe(response => {
-    console.log(response);
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: true,
-      timer: 4000
-    })
+    this.externalService.createUser(user).subscribe((response: Response) => {
+
+      if(response.Code === '001'){
+        Swal.fire({
+          icon: 'warning',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 4000
+        });
+      }
+      if(response.Code === '000'){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 4000
+        }).then(() => {
+          this.router.navigate(['/login']);
+        });
+
+      }
+
     },
     error => { console.log(JSON.stringify(error));
     });

@@ -36,8 +36,10 @@ export class ExternalService {
     data.deleterUserId = user.deleterUserId
 
     let Json = JSON.stringify(data);
+
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post('http://localhost:61048/api/external/CreateUser', Json, {headers: headers});
+
+    return this.httpClient.post(this.apiURL + 'api/external/CreateUser', Json, {headers: headers});
   }
   
 }

@@ -1,6 +1,6 @@
 export class Response {
-    code: string;
-    message: string;
-    messageDetail: object;
-    data: object;
+    Code: string;
+    Message: string;
+    MessageDetail: object;
+    Data: object;
 }
