@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
 
     this.externalService.createUser(user).subscribe((response: Response) => {
 
-      if(response.Code === '001'){
+      if(response.Code !== '000'){
         Swal.fire({
           icon: 'warning',
           title: response.Message,

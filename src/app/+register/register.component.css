@@ -8,3 +8,10 @@
   font-weight: bold;
   font-size: 20px;
 }
+
+.registerBody{
+  border-radius: 15px;
+  border-color: darkorchid;
+  border-width: 8px;
+  border-style: groove;
+}

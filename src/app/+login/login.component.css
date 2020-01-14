@@ -1,4 +1,17 @@
 .login-page {
   overflow: hidden;
-  min-height: 100%;
+  min-height: 90%;
+}
+
+.register{
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.loginBody{
+  border-radius: 20px;
+  border-color: darkorchid;
+  border-width: 8px;
+  border-style: groove;
 }
