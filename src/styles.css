@@ -8,3 +8,9 @@
 .table-bordered > tfoot > tr > td {
   border-color: #eae3e3;
 }
+
+.required{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}

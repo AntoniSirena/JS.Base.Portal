@@ -54,14 +54,6 @@ export class RegisterComponent implements OnInit {
 
     this.externalService.createUser(user).subscribe((response: Response) => {
 
-      if(response.Code !== '000'){
-        Swal.fire({
-          icon: 'warning',
-          title: response.Message,
-          showConfirmButton: true,
-          timer: 4000
-        });
-      }
       if(response.Code === '000'){
         Swal.fire({
           position: 'top-end',
@@ -72,7 +64,13 @@ export class RegisterComponent implements OnInit {
         }).then(() => {
           this.router.navigate(['/login']);
         });
-
+      }else{
+        Swal.fire({
+          icon: 'warning',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 4000
+        });
       }
 
     },
