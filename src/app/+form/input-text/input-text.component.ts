@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.css']
@@ -8,7 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InputTextComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder) {
+    }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({

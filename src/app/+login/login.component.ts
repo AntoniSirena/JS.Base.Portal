@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
-import {LoginService } from 'src/app/services/login/login.service';
-import { Login } from 'src/app/models/login/login';
-import { Response } from 'src/app/models/response/response';
 import { FormControl, FormGroup, FormBuilder, Validators , FormArray} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
+import {LoginService } from 'src/app/services/login/login.service';
+import { Login } from 'src/app/models/login/login';
+import { BaseService } from 'src/app/services/base/base.service';
+
+import { Response } from 'src/app/models/response/response';
+import { Configuration, Enterprise } from 'src/app/templates/configuration';
+import { Profile, User } from 'src/app/models/profile/profile';
+import { Permission } from 'src/app/models/permission/permission';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +21,19 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  enterpriseConfig = new Configuration();
+  profile = new Profile();
+  user = new User();
+  permission = new Permission();
 
-  constructor(private loginService: LoginService, private form: FormBuilder, private router :Router) { }
+  //constructor
+  constructor(
+    private loginService: LoginService, 
+    private baseService: BaseService, 
+    private form: FormBuilder, 
+    private router :Router){ 
+
+    }
 
   ngOnInit() {
 
@@ -33,25 +50,47 @@ export class LoginComponent implements OnInit {
     user.password = loginForm.password;
 
     this.loginService.authenticate(user).subscribe((response: Response) => {
-      console.log(response);
+
       if(response.Code === '000'){
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: response.Message,
           showConfirmButton: true,
-          timer: 4000
+          timer: 2000
         }).then(() => {
-          this.router.navigate(['']);
+          this.router.navigate(['']).then(() =>{
+            window.location.reload();
+          });
         });
       }else{
         Swal.fire({
           icon: 'warning',
           title: response.Message,
           showConfirmButton: true,
-          timer: 5000
+          timer: 2000
         });
       }
+
+      console.log(response);
+
+      //Cache Storega
+      this.enterpriseConfig = response.Data;
+      //console.log( JSON.stringify(this.enterpriseConfig.Configuration.Data.Enterprise));
+      localStorage.setItem("enterprise", `${ JSON.stringify(this.enterpriseConfig.Configuration.Data.Enterprise) }`)
+
+      this.profile = response.Data;
+      //console.log(this.profile.Profile.Person);
+      //console.log(this.profile.Profile.User);
+      localStorage.setItem("currentPerson", `${ JSON.stringify(this.profile.Profile.Person) }`);
+      localStorage.setItem("currentUser", `${ JSON.stringify(this.profile.Profile.User) }`);
+
+      localStorage.setItem("rolShortName", `${ JSON.stringify(this.profile.Profile.User.RolShortName) }`);
+      localStorage.setItem("currentMenuTemplate", `${ JSON.stringify(this.profile.Profile.User.MenuTemplate) }`);
+
+      this.permission = response.Data;
+      //console.log(this.permission.Permissions);
+      localStorage.setItem("permissions", `${ JSON.stringify(this.permission.Permissions) }`);
 
     },
     error => { console.log(JSON.stringify(error));

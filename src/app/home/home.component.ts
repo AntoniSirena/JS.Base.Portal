@@ -9,10 +9,11 @@ import * as Prism from 'prismjs';
 })
 export class HomeComponent implements AfterViewInit {
 
-  /**
-   * @method ngAfterViewInit
-   */
-  ngAfterViewInit() {
-    Prism.highlightAll();
-  }
+
+    /**
+     * @method ngAfterViewInit
+    */
+     ngAfterViewInit() {
+      Prism.highlightAll();
+    }
 }

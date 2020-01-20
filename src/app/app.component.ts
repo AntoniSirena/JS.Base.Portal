@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'angular-admin-lte';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { BaseService } from 'src/app/services/base/base.service';
+
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,11 @@ export class AppComponent implements OnInit {
   public rutaActual: string = "";
   cargaInicial: boolean = false;
 
-  constructor( private layoutService: LayoutService, private router: Router, private location: Location ) {}
+  constructor( 
+    private layoutService: LayoutService, 
+    private router: Router, 
+    private location: Location,
+    private baseService: BaseService ) {}
 
   ngOnInit() {
     this.layoutService.isCustomLayout.subscribe((value: boolean) => {
@@ -28,4 +34,6 @@ export class AppComponent implements OnInit {
     }
 
   }
+
+
 }
