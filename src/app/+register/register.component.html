@@ -37,8 +37,12 @@
 
         <div class="row">
           <!-- /.col -->
+          <div class="col-xs-8">
+            <button (click)="volverAtras()" class="btn btn-primary right-block" style="background-color: green; font-weight: bold;">Volver atras</button>
+          </div>
+
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary center-block" [disabled]="myForm.invalid">Register</button>
+            <button type="submit" class="btn btn-primary left-block" [disabled]="myForm.invalid" style="font-weight: bold;">Register</button>
           </div>
           <!-- /.col -->
         </div>

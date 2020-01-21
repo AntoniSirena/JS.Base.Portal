@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
           icon: 'success',
           title: response.Message,
           showConfirmButton: true,
-          timer: 4000
+          timer: 2000
         }).then(() => {
           this.router.navigate(['/login']);
         });
@@ -76,6 +76,10 @@ export class RegisterComponent implements OnInit {
     },
     error => { console.log(JSON.stringify(error));
     });
+  }
+
+  volverAtras(){
+    this.router.navigate(['/login']);
   }
 
 }

@@ -92,6 +92,8 @@ export class LoginComponent implements OnInit {
       //console.log(this.permission.Permissions);
       localStorage.setItem("permissions", `${ JSON.stringify(this.permission.Permissions) }`);
 
+      localStorage.setItem("isSectionActive", `${ JSON.stringify(1)}`);
+
     },
     error => { console.log(JSON.stringify(error));
     });
