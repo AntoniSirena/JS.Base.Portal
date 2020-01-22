@@ -1,9 +1,13 @@
+[![Build Status](https://travis-ci.org/mledour/angular-admin-lte.svg?branch=master)](https://travis-ci.org/mledour/angular-admin-lte)
+[![npm version](https://badge.fury.io/js/angular-admin-lte.svg)](https://badge.fury.io/js/angular-admin-lte)
+
 # angular-admin-lte
 
 Admin-lte implementation for Angular 4+
 
 ## Doc & Demo
-[https://mika-el.github.io/angular-admin-lte](https://mika-el.github.io/angular-admin-lte/)
+[https://mledour.github.io/angular-admin-lte/branches/master](https://mledour.github.io/angular-admin-lte/branches/master)
+
 
 ## Installation
 
@@ -15,7 +19,7 @@ $ npm install angular-admin-lte --save
 
 ## Install demo
 ```bash
-$ git clone git://github.com/mika-el/angular-admin-lte
+$ git clone git://github.com/mledour/angular-admin-lte
 $ cd angular-admin-lte
 $ npm install
 ```
