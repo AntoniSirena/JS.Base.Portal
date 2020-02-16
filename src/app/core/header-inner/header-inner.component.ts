@@ -44,7 +44,6 @@ export class HeaderInnerComponent {
         ).then(() => {
           this.router.navigate(['/login']);
           localStorage.clear();
-          localStorage.setItem("isSectionActive",`${ JSON.stringify(1)}`);
         });
         
       }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { environment} from 'src/environments/environment';
 import { User } from 'src/app/models/user/user';
+import { Enterprise } from 'src/app/templates/configuration';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,9 @@ export class ExternalService {
 
     return this.httpClient.post(this.apiURL + 'api/external/CreateUser', Json, {headers: headers});
   }
-  
+
+  getEnterpriseInfo():Observable<object>{
+    return this.httpClient.get(this.apiURL +'api/external/GetEnterpriseInfo');
+  }
+
 }

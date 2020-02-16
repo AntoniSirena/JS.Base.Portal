@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import {LoginService } from 'src/app/services/login/login.service';
 import { Login } from 'src/app/models/login/login';
 import { BaseService } from 'src/app/services/base/base.service';
+import { ExternalService } from 'src/app/services/external/external.service';
 
 import { Response } from 'src/app/models/response/response';
 import { Configuration, Enterprise } from 'src/app/templates/configuration';
@@ -25,11 +26,13 @@ export class LoginComponent implements OnInit {
   profile = new Profile();
   user = new User();
   permission = new Permission();
+  enterpriseInfo = new Enterprise();
 
   //constructor
   constructor(
     private loginService: LoginService, 
     private baseService: BaseService, 
+    private externalService: ExternalService,
     private form: FormBuilder, 
     private router :Router){ 
 
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.getEnterpriseInfo();
   }
 
   onSubmit(loginForm: any){
@@ -94,6 +98,16 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("isSectionActive", `${ JSON.stringify(1)}`);
 
+    },
+    error => { console.log(JSON.stringify(error));
+    });
+
+  }
+
+
+  getEnterpriseInfo(){
+    this.externalService.getEnterpriseInfo().subscribe((response: Response) => {
+     this.enterpriseInfo = response.Data;
     },
     error => { console.log(JSON.stringify(error));
     });
