@@ -21,6 +21,7 @@ export class HeaderInnerComponent {
       this.person = baseService.getCurrentPerson();
   }
 
+  
   profile(){
     alert('perfil');
   }
