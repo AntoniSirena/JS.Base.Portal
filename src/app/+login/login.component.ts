@@ -108,6 +108,7 @@ export class LoginComponent implements OnInit {
   getEnterpriseInfo(){
     this.externalService.getEnterpriseInfo().subscribe((response: Response) => {
      this.enterpriseInfo = response.Data;
+     console.log(this.enterpriseInfo);
     },
     error => { console.log(JSON.stringify(error));
     });
