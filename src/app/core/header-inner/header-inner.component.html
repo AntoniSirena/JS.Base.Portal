@@ -1,3 +1,46 @@
+<style>
+  body {font-family: Arial;}
+  
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color:rgb(124, 169, 206)
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  </style>
+
+
 <div class="navbar-custom-menu">
   <ul class="nav navbar-nav">
     <!-- Messages: style can be found in dropdown.less -->
@@ -238,6 +281,7 @@
 
 
 <!--Profile modal-->
+
 <div class="modal" id="myModal" [ngClass]="{'show': showModal}">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -249,6 +293,27 @@
 
       <!-- Modal body -->
       <div class="modal-body">
+
+          <div class="tab">
+            <button class="tablinks" (click)="openTabs($event, 'User')">Usuario</button>
+            <button class="tablinks" (click)="openTabs($event, 'Person')">Persona</button>
+            <button class="tablinks" (click)="openTabs($event, 'Locators')">Localizadores</button>
+          </div>
+
+          <div id="User" class="tabcontent">
+            <h3>User</h3>
+            <p>London is the capital city of England.</p>
+          </div>
+
+          <div id="Person" class="tabcontent">
+            <h3>Person</h3>
+            <p>Paris is the capital of France.</p> 
+          </div>
+
+          <div id="Locators" class="tabcontent">
+            <h3>Locators</h3>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
 
       </div>
 

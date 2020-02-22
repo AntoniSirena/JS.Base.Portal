@@ -16,7 +16,7 @@ import { SidebarRightInnerComponent } from './sidebar-right-inner/sidebar-right-
     DropdownModule,
     TabsModule,
     BoxModule
-  ],
+    ],
   declarations: [HeaderInnerComponent, SidebarLeftInnerComponent, SidebarRightInnerComponent],
   exports: [BoxModule, TabsModule, HeaderInnerComponent, SidebarLeftInnerComponent, SidebarRightInnerComponent]
 })

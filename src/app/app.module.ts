@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoadingPageModule, MaterialBarModule,
     FormsModule,
     ReactiveFormsModule
-  ],
+    ],
   declarations: [
     AppComponent,
     HomeComponent
