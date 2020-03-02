@@ -20,5 +20,20 @@ export class CommonService {
     return this.httpClient.get(this.apiURL +'api/common/GetGenders');
   }
 
+  getLocatorsTypes():Observable<object>{    
+    return this.httpClient.get(this.apiURL +'api/common/GetLocatorsTypes');
+  }
+
+  getInfoCurrentUser():Observable<object>{    
+    return this.httpClient.get(this.apiURL +'api/common/GetInfoCurrentUser');
+  }
+
+  getInfoCurrentPerson():Observable<object>{    
+    return this.httpClient.get(this.apiURL +'api/common/GetInfoCurrentPerson');
+  }
+
+  getInfoCurrentLocators():Observable<object>{    
+    return this.httpClient.get(this.apiURL +'api/common/GetInfoCurrentLocators');
+  }
 
 }
