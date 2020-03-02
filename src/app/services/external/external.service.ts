@@ -43,7 +43,7 @@ export class ExternalService {
     return this.httpClient.post(this.apiURL + 'api/external/CreateUser', Json, {headers: headers});
   }
 
-  getEnterpriseInfo():Observable<object>{
+  getEnterpriseInfo():Observable<object>{    
     return this.httpClient.get(this.apiURL +'api/external/GetEnterpriseInfo');
   }
 

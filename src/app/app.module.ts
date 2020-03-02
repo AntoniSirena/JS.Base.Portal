@@ -13,7 +13,8 @@ import { HomeComponent } from './home/home.component';
 
 import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule ,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptors/interceptor.service';
 
 
 @NgModule({
@@ -24,14 +25,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LayoutModule.forRoot(adminLteConf),
     LoadingPageModule, MaterialBarModule,
     FormsModule,
-    ReactiveFormsModule
-    ],
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+
+  providers:[
+      {
+       provide: HTTP_INTERCEPTORS,
+       useClass: InterceptorService,
+       multi: true
+      },
+  ],
+
   declarations: [
     AppComponent,
     HomeComponent
   ],
+
   bootstrap: [
     AppComponent
-    ]
+  ]
+  
 })
 export class AppModule {}

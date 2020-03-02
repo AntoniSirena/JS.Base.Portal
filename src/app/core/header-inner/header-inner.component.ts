@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Person, User } from 'src/app/models/profile/profile';
 import { BaseService } from 'src/app/services/base/base.service';
+import { CommonService } from 'src/app/services/common/common.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { User as UserModel } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-header-inner',
@@ -13,13 +15,15 @@ export class HeaderInnerComponent {
 
   user = new User();
   person = new Person();
+  userModel = new UserModel();
 
   constructor(
     private baseService: BaseService,
+    private commonService: CommonService,
     private router :Router){
       this.user = baseService.getCurrentUser();
       this.person = baseService.getCurrentPerson();
-  }
+    }
 
   
   profile(){
@@ -54,6 +58,11 @@ export class HeaderInnerComponent {
   
   openTabs(evt, tabName){
     var i, tabcontent, tablinks;
+    
+    if(tabName === 'Person'){
+      this.getGenders();
+    }
+
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -64,6 +73,15 @@ export class HeaderInnerComponent {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+
+
+  getGenders(){
+    this.commonService.getGenders().subscribe((response: Object) => {
+    },
+    error => { console.log(JSON.stringify(error));
+    });
+
   }
 
 }

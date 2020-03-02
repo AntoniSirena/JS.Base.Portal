@@ -76,8 +76,6 @@ export class LoginComponent implements OnInit {
         });
       }
 
-      console.log(response);
-
       //Cache Storega
       this.enterpriseConfig = response.Data;
       //console.log( JSON.stringify(this.enterpriseConfig.Configuration.Data.Enterprise));
@@ -98,6 +96,9 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("isSectionActive", `${ JSON.stringify(1)}`);
 
+      //Token
+      localStorage.setItem("token", `${ JSON.stringify(this.profile.Profile.User.Token)}`);
+
     },
     error => { console.log(JSON.stringify(error));
     });
@@ -108,7 +109,6 @@ export class LoginComponent implements OnInit {
   getEnterpriseInfo(){
     this.externalService.getEnterpriseInfo().subscribe((response: Response) => {
      this.enterpriseInfo = response.Data;
-     console.log(this.enterpriseInfo);
     },
     error => { console.log(JSON.stringify(error));
     });

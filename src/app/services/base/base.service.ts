@@ -5,6 +5,7 @@ import { Configuration, Enterprise } from 'src/app/templates/configuration';
 import { Profile, User, Person } from 'src/app/models/profile/profile';
 import { Permission } from 'src/app/models/permission/permission';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +43,18 @@ export class BaseService {
     this.value = localStorage.getItem("permissions");
     this.permission = JSON.parse(this.value);
     return this.permission;
+  }
+
+  getToken():string{
+    let result;
+    if(localStorage.length > 0){
+      this.value = localStorage.getItem("token");
+      result = this.value.replace(/['"]+/g, '');
+    }
+    else{
+      result = '';
+    }
+    return result;
   }
 
 }
