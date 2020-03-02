@@ -301,8 +301,61 @@
           </div>
 
           <div id="User" class="tabcontent">
-            <h3>User</h3>
-            <p>London is the capital city of England.</p>
+            
+            <form [formGroup]="userForm" (submit)="userOnSubmit(userForm.value)">
+              <div class="container" style="overflow: auto; width: 100%; height: 500px;">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                     <input type="text" class="form-control" formControlName="userName" placeholder="Usuario">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="name" placeholder="Primer nombre">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="surName" placeholder="Primer apellido">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="email" class="form-control" formControlName="emailAddress" placeholder="Correo electronico">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                      <a >
+                        <img src="data:image/png;base64,{{user.Image}}" class="user-image" alt="User Image" style="width: 400; height: 250px;">
+                      </a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-4 col-lg-4">
+                    <a href="#" class="btn btn-primary" style="margin-top: 8px;" role="button">Subir imagen</a>
+                  </div>                          
+                </div>
+
+              </div>
+
+            </form>
+
           </div>
 
           <div id="Person" class="tabcontent">

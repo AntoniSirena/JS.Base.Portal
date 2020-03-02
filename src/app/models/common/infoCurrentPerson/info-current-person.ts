@@ -1,9 +1,9 @@
 export class InfoCurrentPerson {
-    firstName: string;
-    secondName: string;
-    surname: string;
-    secondSurname: string;
-    birthDate: string;
-    fullName: string;
-    genderId: number;
+    FirstName: string;
+    SecondName: string;
+    SurName: string;
+    SecondSurname: string;
+    BirthDate: string;
+    FullName: string;
+    GenderId: number;
 }

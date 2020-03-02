@@ -11,6 +11,8 @@ import { InfoCurrentUser } from 'src/app/models/common/infoCurrentUser/info-curr
 import { InfoCurrentPerson } from 'src/app/models/common/infoCurrentPerson/info-current-person';
 import { InfoCurrentLocators } from 'src/app/models/common/infoCurrentLocators/info-current-locators';
 
+import { FormControl, FormGroup, FormBuilder, Validators , FormArray} from '@angular/forms';
+
 
 @Component({
   selector: 'app-header-inner',
@@ -32,15 +34,39 @@ export class HeaderInnerComponent {
   personTab: boolean = false;
   locatorsTab: boolean = false;
 
+  userForm: FormGroup;
+  personForm: FormGroup;
+  locatorsForm: FormGroup;
+
+  //contructor
   constructor(
     private baseService: BaseService,
     private commonService: CommonService,
-    private router :Router){
+    private router :Router,
+    private form: FormBuilder){
+
       this.user = baseService.getCurrentUser();
       this.person = baseService.getCurrentPerson();
+
+      this.getInfoCurrentUser();
+      this.getGenders();
+      this.getInfoCurrentPerson();
+      this.getLocatorsTypes();
+      this.getInfoCurrentLocators();
     }
 
-  
+
+  ngOnInit() {
+    this.userForm = this.form.group({
+      userName: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      name: ['', Validators.required],
+      surName: ['', Validators.required],
+      emailAddress: ['', [Validators.required, Validators.email]]
+    });
+
+  }
+
   profile(){
     alert('perfil');
   }
@@ -76,30 +102,24 @@ export class HeaderInnerComponent {
     
     switch(tabName){
       case 'User':
-        console.log(this.userTab);
-        if(this.userTab === false){
-          this.getInfoCurrentUser();
 
-          this.userTab = true;
-        }     
+        //Llenando los input del tab usuario
+        this.userForm = this.form.group({
+          userName: [`${this.infoCurrentUser.UserName}`, Validators.required],
+          password: [`${this.infoCurrentUser.Password}`, [Validators.required, Validators.minLength(8)]],
+          name: [`${this.infoCurrentUser.Name}`, Validators.required],
+          surName: [`${this.infoCurrentUser.SurName}`, Validators.required],
+          emailAddress: [`${this.infoCurrentUser.EmailAddress}`, [Validators.required, Validators.email]]
+        });
+
       break;
 
       case 'Person':
-        if(this.personTab === false){
-          this.getInfoCurrentPerson();
-          this.getGenders();
-
-          this.personTab = true;
-        }       
+      
       break;
 
       case 'Locators':
-        if(this.locatorsTab === false){
-          this.getInfoCurrentLocators();
-          this.getLocatorsTypes();
 
-          this.locatorsTab = true;
-        }
       break;
 
       default:''
@@ -158,5 +178,7 @@ export class HeaderInnerComponent {
     error => { console.log(JSON.stringify(error));
     });
   }
+
+  
 
 }

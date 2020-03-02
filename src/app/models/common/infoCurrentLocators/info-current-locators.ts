@@ -1,6 +1,6 @@
 export class InfoCurrentLocators {
-    locatorTypeId: number;
-    locatorTypeDescription: string;
-    description: string;
-    isMain: boolean;
+    LocatorTypeId: number;
+    LocatorTypeDescription: string;
+    Description: string;
+    IsMain: boolean;
 }

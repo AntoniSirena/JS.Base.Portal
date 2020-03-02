@@ -1,5 +1,5 @@
 export class LocatorsTypes {
-    id: number;
-    code: string;
-    description: string;
+    Id: number;
+    Code: string;
+    Description: string;
 }

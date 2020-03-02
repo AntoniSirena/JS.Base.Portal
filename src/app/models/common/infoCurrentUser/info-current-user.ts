@@ -1,8 +1,8 @@
 export class InfoCurrentUser {
-    userName: string;
-    password: string;
-    name: string;
-    surname: string;
-    emailAddress: string;
-    image: string;
+    UserName: string;
+    Password: string;
+    Name: string;
+    SurName: string;
+    EmailAddress: string;
+    Image: string;
 }
