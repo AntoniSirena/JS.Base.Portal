@@ -300,6 +300,7 @@
             <button class="tablinks" (click)="openTabs($event, 'Locators')">Localizadores</button>
           </div>
 
+          <!-- Tab user -->
           <div id="User" class="tabcontent">
             
             <form [formGroup]="userForm" (submit)="currentUserOnSubmit(userForm.value)">
@@ -316,51 +317,58 @@
                   <div class="col-xs-6 col-sm-4 col-lg-4">
                     <div class="form-group" style="margin-top: 8px;">
                       <input type="file" class="form-control-file" id="profileImage" 
-                      [(ngModel)]="profileImage.image"
-                      [ngModelOptions]="{standalone: true}"
-                      (change)="uploadImage()">
+                      (change)="uploadImage($event)">
                    </div>
                   </div>                         
                 </div>
 
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                     <input type="text" class="form-control" formControlName="userName" placeholder="Usuario">
-                     <div *ngIf="!userForm.value.userName" class="required">*</div>
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Usuario</span>
+                      <input type="text" class="form-control" formControlName="userName" placeholder="Usuario">
                     </div>
+                    <div *ngIf="!userForm.value.userName" class="required">*</div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Contraseña</span>
                       <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
-                      <div *ngIf="!userForm.value.password" class="required">*</div>
                     </div>
+                    <div *ngIf="!userForm.value.password" class="required">*</div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Primer nombre</span>
                       <input type="text" class="form-control" formControlName="name" placeholder="Primer nombre">
-                      <div *ngIf="!userForm.value.name" class="required">*</div>
                     </div>
+                    <div *ngIf="!userForm.value.name" class="required">*</div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Primer apellido</span>
                       <input type="text" class="form-control" formControlName="surName" placeholder="Primer apellido">
-                      <div *ngIf="!userForm.value.surName" class="required">*</div>
                     </div>
+                    <div *ngIf="!userForm.value.surName" class="required">*</div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Correo electronico</span>
                       <input type="email" class="form-control" formControlName="emailAddress" placeholder="Correo electronico">
-                      <div *ngIf="!userForm.value.emailAddress" class="required">*</div>
                     </div>
+                    <div *ngIf="!userForm.value.emailAddress" class="required">*</div>
                   </div>
                 </div>
 
@@ -376,9 +384,89 @@
 
           </div>
 
+          <!-- Tab person -->
           <div id="Person" class="tabcontent">
-            <h3>Person</h3>
-            <p>Paris is the capital of France.</p> 
+            
+            <form [formGroup]="personForm" (submit)="currentPersonOnSubmit(personForm.value)">
+              <div class="container" style="overflow: auto; width: 100%; height: 500px;">
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Primer nombre</span>
+                      <input type="text" class="form-control" formControlName="firstName" placeholder="Primer nombre">
+                    </div>
+                    <div *ngIf="!personForm.value.firstName" class="required">*</div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Segundo nombre</span>
+                      <input type="text" class="form-control" formControlName="secondName" placeholder="Segundo nombre">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Primer apellido</span>
+                      <input type="text" class="form-control" formControlName="surName" placeholder="Primer apellido">
+                    </div>
+                    <div *ngIf="!personForm.value.surName" class="required">*</div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Segundo apellido</span>
+                      <input type="text" class="form-control" formControlName="secondSurname" placeholder="Segundo apellido">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Nombre completo</span>
+                      <input type="text" class="form-control" formControlName="fullName" readonly placeholder="Nombre completo">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-4 col-lg-4">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Fecha nacimiento</span>
+                      <input type="date" class="form-control" formControlName="birthDate" placeholder="Fecha nacimiento">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-4 col-lg-4">
+                    <div class="input-group form-group">
+                      <span class="input-group-addon" style="font-weight: bold;">Genero</span>
+                      <select class="form-control"  formControlName="genderId">
+                        <option *ngFor="let item of genders " [value]="item.Id">{{item.Description}}</option>
+                    </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <button title="submit" class="btn btn-primary" style="margin-top: 8px;" role="button" [disabled]="personForm.invalid" >Guardar cambios</button>
+                  </div> 
+                </div>
+
+              </div>
+
+            </form>
+
           </div>
 
           <div id="Locators" class="tabcontent">

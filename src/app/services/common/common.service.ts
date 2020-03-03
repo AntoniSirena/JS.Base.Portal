@@ -54,5 +54,21 @@ export class CommonService {
     return this.httpClient.put(this.apiURL + 'api/common/UpdateInfoCurrentUser', Json, {headers: headers});
   }
 
+  updateInfoCurrentPerson(infoCurrentPerson: InfoCurrentPerson){
+    const data = new InfoCurrentPerson();
+    data.FirstName = infoCurrentPerson.FirstName,
+    data.SecondName = infoCurrentPerson.SecondName,
+    data.SurName = infoCurrentPerson.SurName,
+    data.SecondSurname = infoCurrentPerson.SecondSurname,
+    data.FullName = infoCurrentPerson.FullName,
+    data.BirthDate = infoCurrentPerson.BirthDate,
+    data.GenderId = infoCurrentPerson.GenderId
+
+    let Json = JSON.stringify(data);
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.put(this.apiURL + 'api/common/UpdateInfoCurrentPerson', Json, {headers: headers});
+  }
 
 }

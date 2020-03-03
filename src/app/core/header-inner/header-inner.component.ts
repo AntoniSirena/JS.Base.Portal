@@ -25,7 +25,7 @@ export class HeaderInnerComponent {
   user = new User();
   person = new Person();
   userModel = new UserModel();
-  gender = new Gender();
+  genders = new Gender();
   locatorsTypes = new LocatorsTypes();
   infoCurrentUser = new InfoCurrentUser();
   infoCurrentPerson = new InfoCurrentPerson();
@@ -68,6 +68,16 @@ export class HeaderInnerComponent {
       emailAddress: ['', [Validators.required, Validators.email]]
     });
 
+    this.personForm = this.form.group({
+      firstName: ['', Validators.required],
+      secondName: ['', ],
+      surName: ['', Validators.required],
+      secondSurname: ['',],
+      fullName: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      genderId: ['', Validators.required]
+    });
+
   }
 
   profile(){
@@ -75,8 +85,8 @@ export class HeaderInnerComponent {
   }
 
 
-  uploadImage(){
-    console.log(this.profileImage.image);
+  uploadImage(event){
+    console.log(event);
   }
   
 
@@ -115,6 +125,17 @@ export class HeaderInnerComponent {
       break;
 
       case 'Person':
+
+        //Llenando los input del tab persona
+        this.personForm = this.form.group({
+          firstName: [`${this.infoCurrentPerson.FirstName}`, Validators.required],
+          secondName: [`${this.infoCurrentPerson.SecondName}`, ],
+          surName: [`${this.infoCurrentPerson.SurName}`, Validators.required],
+          secondSurname: [`${this.infoCurrentPerson.SecondSurname}`, ],
+          fullName: [`${this.infoCurrentPerson.FullName}`, Validators.required],
+          birthDate: [`${this.infoCurrentPerson.BirthDate}`, Validators.required],
+          genderId: [`${this.infoCurrentPerson.GenderId}`, Validators.required]
+        });
       
       break;
 
@@ -141,7 +162,7 @@ export class HeaderInnerComponent {
 
   getGenders(){
     this.commonService.getGenders().subscribe((response: Gender) => {
-      this.gender = response;
+      this.genders = response;
     },
     error => { console.log(JSON.stringify(error));
     });
@@ -190,6 +211,41 @@ export class HeaderInnerComponent {
     infoCurrentUser.EmailAddress = formValue.emailAddress,
 
     this.commonService.updateInfoCurrentUser(infoCurrentUser).subscribe((response: Response) => {
+
+      if(response.Code === '000'){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 3000
+        });
+      }else{
+        Swal.fire({
+          icon: 'warning',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 4000
+        });
+      }
+
+    },
+    error => { console.log(JSON.stringify(error));
+    });
+  }
+
+
+  currentPersonOnSubmit(formValue: any){
+    const infoCurrentPerson = new InfoCurrentPerson();
+    infoCurrentPerson.FirstName = formValue.firstName,
+    infoCurrentPerson.SurName = formValue.surName,
+    infoCurrentPerson.SecondName = formValue.secondName,
+    infoCurrentPerson.SecondSurname = formValue.secondSurname,
+    infoCurrentPerson.FullName = formValue.fullName,
+    infoCurrentPerson.BirthDate = formValue.birthDate,
+    infoCurrentPerson.GenderId = formValue.genderId
+
+    this.commonService.updateInfoCurrentPerson(infoCurrentPerson).subscribe((response: Response) => {
 
       if(response.Code === '000'){
         Swal.fire({
