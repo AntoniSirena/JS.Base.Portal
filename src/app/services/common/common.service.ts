@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { environment} from 'src/environments/environment';
 import { BaseService } from 'src/app/services/base/base.service';
+import { InfoCurrentUser } from 'src/app/models/common/infoCurrentUser/info-current-user';
+import { InfoCurrentPerson } from 'src/app/models/common/infoCurrentPerson/info-current-person';
+import { InfoCurrentLocators } from 'src/app/models/common/infoCurrentLocators/info-current-locators';
 
 
 @Injectable({
@@ -35,5 +38,21 @@ export class CommonService {
   getInfoCurrentLocators():Observable<object>{    
     return this.httpClient.get(this.apiURL +'api/common/GetInfoCurrentLocators');
   }
+
+  updateInfoCurrentUser(infoCurrentUser: InfoCurrentUser){
+    const data = new InfoCurrentUser();
+    data.UserName = infoCurrentUser.UserName,
+    data.Password = infoCurrentUser.Password,
+    data.Name = infoCurrentUser.Name,
+    data.SurName = infoCurrentUser.SurName,
+    data.EmailAddress = infoCurrentUser.EmailAddress
+
+    let Json = JSON.stringify(data);
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.put(this.apiURL + 'api/common/UpdateInfoCurrentUser', Json, {headers: headers});
+  }
+
 
 }

@@ -302,43 +302,9 @@
 
           <div id="User" class="tabcontent">
             
-            <form [formGroup]="userForm" (submit)="userOnSubmit(userForm.value)">
+            <form [formGroup]="userForm" (submit)="currentUserOnSubmit(userForm.value)">
               <div class="container" style="overflow: auto; width: 100%; height: 500px;">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                     <input type="text" class="form-control" formControlName="userName" placeholder="Usuario">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                      <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                      <input type="text" class="form-control" formControlName="name" placeholder="Primer nombre">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                      <input type="text" class="form-control" formControlName="surName" placeholder="Primer apellido">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8 col-lg-8">
-                    <div class="form-group">
-                      <input type="email" class="form-control" formControlName="emailAddress" placeholder="Correo electronico">
-                    </div>
-                  </div>
-                </div>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-8 col-lg-8">
                       <a >
@@ -348,8 +314,60 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-6 col-sm-4 col-lg-4">
-                    <a href="#" class="btn btn-primary" style="margin-top: 8px;" role="button">Subir imagen</a>
-                  </div>                          
+                    <div class="form-group" style="margin-top: 8px;">
+                      <input type="file" class="form-control-file" id="profileImage" 
+                      [(ngModel)]="profileImage.image"
+                      [ngModelOptions]="{standalone: true}"
+                      (change)="uploadImage()">
+                   </div>
+                  </div>                         
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                     <input type="text" class="form-control" formControlName="userName" placeholder="Usuario">
+                     <div *ngIf="!userForm.value.userName" class="required">*</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                      <div *ngIf="!userForm.value.password" class="required">*</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="name" placeholder="Primer nombre">
+                      <div *ngIf="!userForm.value.name" class="required">*</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="surName" placeholder="Primer apellido">
+                      <div *ngIf="!userForm.value.surName" class="required">*</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="form-group">
+                      <input type="email" class="form-control" formControlName="emailAddress" placeholder="Correo electronico">
+                      <div *ngIf="!userForm.value.emailAddress" class="required">*</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <button title="submit" class="btn btn-primary" style="margin-top: 8px;" role="button" [disabled]="userForm.invalid" >Guardar cambios</button>
+                  </div> 
                 </div>
 
               </div>

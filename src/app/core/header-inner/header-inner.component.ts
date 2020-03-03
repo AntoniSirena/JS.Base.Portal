@@ -12,6 +12,7 @@ import { InfoCurrentPerson } from 'src/app/models/common/infoCurrentPerson/info-
 import { InfoCurrentLocators } from 'src/app/models/common/infoCurrentLocators/info-current-locators';
 
 import { FormControl, FormGroup, FormBuilder, Validators , FormArray} from '@angular/forms';
+import { Response } from 'src/app/models/response/response';
 
 
 @Component({
@@ -37,6 +38,8 @@ export class HeaderInnerComponent {
   userForm: FormGroup;
   personForm: FormGroup;
   locatorsForm: FormGroup;
+
+  profileImage: any = {image:''};
 
   //contructor
   constructor(
@@ -71,6 +74,12 @@ export class HeaderInnerComponent {
     alert('perfil');
   }
 
+
+  uploadImage(){
+    console.log(this.profileImage.image);
+  }
+  
+
   signOut(){
     Swal.fire({
       title: 'Esta seguro que desea salir ?',
@@ -81,17 +90,8 @@ export class HeaderInnerComponent {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, salir'
     }).then((result) => {
-      if (result.value) {
-        Swal.fire(
-          'Has finalizado seccion.',
-          '',
-          'success'       
-        ).then(() => {
-          this.router.navigate(['/login']);
-          localStorage.clear();
-        });
-        
-      }
+      this.router.navigate(['/login']);
+      localStorage.clear();
     });
 
   }
@@ -179,6 +179,38 @@ export class HeaderInnerComponent {
     });
   }
 
-  
+
+
+  currentUserOnSubmit(formValue: any){
+    const infoCurrentUser = new InfoCurrentUser();
+    infoCurrentUser.UserName = formValue.userName,
+    infoCurrentUser.Password = formValue.password,
+    infoCurrentUser.Name = formValue.name,
+    infoCurrentUser.SurName = formValue.surName,
+    infoCurrentUser.EmailAddress = formValue.emailAddress,
+
+    this.commonService.updateInfoCurrentUser(infoCurrentUser).subscribe((response: Response) => {
+
+      if(response.Code === '000'){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 3000
+        });
+      }else{
+        Swal.fire({
+          icon: 'warning',
+          title: response.Message,
+          showConfirmButton: true,
+          timer: 4000
+        });
+      }
+
+    },
+    error => { console.log(JSON.stringify(error));
+    });
+  }
 
 }
