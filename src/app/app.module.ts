@@ -16,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule ,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptors/interceptor.service';
 import { PortadaComponent } from './portada/portada.component';
-import { MaintenancesComponent } from './maintenances/maintenances.component';
+import { UserComponent } from './maintenances/administration/user/user/user.component';
 
 
 @NgModule({
@@ -43,8 +43,8 @@ import { MaintenancesComponent } from './maintenances/maintenances.component';
     AppComponent,
     HomeComponent,
     PortadaComponent,
-    MaintenancesComponent
-  ],
+    UserComponent
+    ],
 
   bootstrap: [
     AppComponent

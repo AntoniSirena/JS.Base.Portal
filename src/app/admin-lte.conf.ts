@@ -59,7 +59,7 @@ else if(roleShortName === "Admin"){
       {label: 'NAVEGACIÓN PRINCIPAL', separator: true},
       {label: 'Portada', route: 'portada', iconClasses: 'fa fa-home'},
       {label: 'Administración', iconClasses: '', children: [
-          {label: 'Usuarios', route: 'layout/configuration'},
+          {label: 'Usuarios', route: 'administración/user'},
         ]},
       //{label: 'MANTENIMIENTOS', separator: true}
     ]

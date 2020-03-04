@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PortadaComponent } from './portada/portada.component';
+import { UserComponent } from './maintenances/administration/user/user/user.component';
+
 
 
 const routes: Routes = [
@@ -74,7 +76,24 @@ const routes: Routes = [
             }
           },
         ]
-      }, {
+      }, 
+
+      //Administración
+      {
+        path: 'administración',
+        data:{
+          title: ''
+        },
+        children:[
+          {
+            path: 'user',
+            component: UserComponent
+          }
+        ]
+      },
+      //End
+
+      {
         path: 'boxs',
         data: {
           title: 'Boxs',
@@ -140,6 +159,7 @@ const routes: Routes = [
         customLayout: true
       }
     },
+
   ];
 
 
