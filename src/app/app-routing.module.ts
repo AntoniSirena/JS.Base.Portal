@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { PortadaComponent } from './portada/portada.component';
 
 
 const routes: Routes = [
     {
     path: '',
     data: {
-        title: 'Get Started'
+        title: ''
     },
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: PortadaComponent
       }, {
+        path: 'portada',
+        component: PortadaComponent
+      },{
         path: 'accordion',
         loadChildren: './+accordion/accordion.module#AccordionModule',
         data: {

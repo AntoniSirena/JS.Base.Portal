@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
           showConfirmButton: true,
           timer: 2000
         }).then(() => {
-          this.router.navigate(['']).then(() =>{
+          this.router.navigate(['portada']).then(() =>{
             window.location.reload();
           });
         });

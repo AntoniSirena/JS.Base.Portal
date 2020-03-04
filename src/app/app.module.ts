@@ -15,6 +15,8 @@ import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule ,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptors/interceptor.service';
+import { PortadaComponent } from './portada/portada.component';
+import { MaintenancesComponent } from './maintenances/maintenances.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
 
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PortadaComponent,
+    MaintenancesComponent
   ],
 
   bootstrap: [

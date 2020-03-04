@@ -100,8 +100,17 @@ export class HeaderInnerComponent {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, salir'
     }).then((result) => {
-      this.router.navigate(['/login']);
-      localStorage.clear();
+      if (result.value) {
+        Swal.fire(
+          'Gracias por su visita',
+          '',
+          'success'       
+        ).then(() => {
+          this.router.navigate(['/login']);
+          localStorage.clear();
+        });
+        
+      }
     });
 
   }
