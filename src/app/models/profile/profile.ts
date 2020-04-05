@@ -17,8 +17,9 @@ export class User{
     Token: string;
     WelcomeMessage: string;
     MenuTemplate: string;
-    RolDescription: string;
-    RolShortName: string;     
+    RoleDescription: string;
+    RoleShortName: string;   
+    RoleParent: string;  
 }
 
 export class Person{

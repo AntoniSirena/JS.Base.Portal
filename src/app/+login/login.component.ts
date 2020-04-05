@@ -87,7 +87,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("currentPerson", `${ JSON.stringify(this.profile.Profile.Person) }`);
       localStorage.setItem("currentUser", `${ JSON.stringify(this.profile.Profile.User) }`);
 
-      localStorage.setItem("rolShortName", `${ JSON.stringify(this.profile.Profile.User.RolShortName) }`);
+      localStorage.setItem("roleShortName", `${ JSON.stringify(this.profile.Profile.User.RoleShortName) }`);
+      localStorage.setItem("roleParent", `${ JSON.stringify(this.profile.Profile.User.RoleParent) }`);
       localStorage.setItem("currentMenuTemplate", `${ JSON.stringify(this.profile.Profile.User.MenuTemplate) }`);
 
       this.permission = response.Data;

@@ -1,9 +1,9 @@
 
-var roleShortName = JSON.parse(localStorage.getItem("rolShortName"));
+var roleParent = JSON.parse(localStorage.getItem("roleParent"));
 
 export var adminLteConf;
 
-if(roleShortName === "SuperAdmin"){
+if(roleParent === "SuperAdmin"){
   
   adminLteConf = {
     skin: 'yellow',
@@ -43,7 +43,7 @@ if(roleShortName === "SuperAdmin"){
   };
 
 }
-else if(roleShortName === "Admin"){
+else if(roleParent === "Admin"){
 
   adminLteConf = {
     skin: 'blue',
@@ -67,7 +67,7 @@ else if(roleShortName === "Admin"){
   
 }
 
-else if(roleShortName === "Client"){
+else if(roleParent === "Client"){
 
   adminLteConf = {
     skin: 'blue',

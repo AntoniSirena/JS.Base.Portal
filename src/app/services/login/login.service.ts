@@ -16,8 +16,11 @@ export class LoginService {
     this.apiURL = environment.urlEndPoint;
   }
 
-  authenticate(user: Login):Observable<object>{
-   return this.httpClient.get(this.apiURL + `api/login/authenticate?UserName=${user.userName}&Password=${user.password}`);
+  authenticate(user: Login){
+   let Json = JSON.stringify(user);
+   let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+   return this.httpClient.post(this.apiURL + 'api/login/authenticate', Json, {headers: headers});
   }
 
 }
