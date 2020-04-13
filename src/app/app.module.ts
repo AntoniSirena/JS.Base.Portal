@@ -17,6 +17,9 @@ import { HttpClientModule ,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptors/interceptor.service';
 import { PortadaComponent } from './portada/portada.component';
 import { UserComponent } from './maintenances/administration/user/user/user.component';
+import { JsFilterPipe } from './pipes/jsFilter/js-filter.pipe';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -28,7 +31,11 @@ import { UserComponent } from './maintenances/administration/user/user/user.comp
     LoadingPageModule, MaterialBarModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot(),
+    SweetAlert2Module,
+    SweetAlert2Module.forChild({ /* options */ }),
+    Ng2SearchPipeModule
   ],
 
   providers:[
@@ -43,7 +50,8 @@ import { UserComponent } from './maintenances/administration/user/user/user.comp
     AppComponent,
     HomeComponent,
     PortadaComponent,
-    UserComponent
+    UserComponent,
+    JsFilterPipe
     ],
 
   bootstrap: [

@@ -35,7 +35,7 @@ export class InterceptorService implements HttpInterceptor{
       }, (err: any) => {
         if (err instanceof HttpErrorResponse) {
           if(err.status === 0){
-            //this.redirectService.login();
+            this.redirectService.login();
           }
         }
       })
