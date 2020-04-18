@@ -23,12 +23,11 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/bootstrap-css-only/css/bootstrap.min.css",
-              "../node_modules/font-awesome/css/font-awesome.css",
-              "../node_modules/ionicons/css/ionicons.css",
-              "../node_modules/prismjs/themes/prism-tomorrow.css",
-              "../node_modules/admin-lte-css/dist/css/AdminLTE.css",
-              "../node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
+              "node_modules/bootstrap-css-only/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/prismjs/themes/prism-tomorrow.css",
+              "node_modules/admin-lte-css/dist/css/AdminLTE.css",
+              "node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -167,5 +166,8 @@
       }
     }
   },
-  "defaultProject": "angular-admin-lte-demo"
+  "defaultProject": "angular-admin-lte-demo",
+  "cli": {
+    "analytics": false
+  }
 }
